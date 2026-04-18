@@ -5,9 +5,13 @@
 <section class="hero-banner rounded-4 p-5 mb-4 text-white">
     <div class="row align-items-center">
         <div class="col-lg-7">
-            <h1 class="display-5 fw-bold">Sports Store Application</h1>
-            <p class="lead mb-4">Find quality sports gear for training, matches, and everyday fitness.</p>
-            <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg">Shop Products</a>
+            <p class="text-uppercase small fw-semibold mb-2 text-white-50">New Season Drop</p>
+            <h1 class="display-5 fw-bold">Gear Up Like A Pro Athlete</h1>
+            <p class="lead mb-4">Find premium training essentials, team jerseys, and game-ready equipment in one modern sports store.</p>
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg">Shop Products</a>
+                <a asp-controller="Product" asp-action="Products" asp-route-category="Shoes" class="btn btn-outline-light btn-lg">Shop Shoes</a>
+            </div>
         </div>
         <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
             <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded-4 shadow" alt="Sports banner" />

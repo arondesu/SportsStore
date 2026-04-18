@@ -13,7 +13,7 @@ public class ProductController : Controller
         _db = db;
     }
 
-    public IActionResult Products(string? category, int page = 1)
+    public IActionResult Products(string? category, string? search, string sort = "featured", int page = 1)
     {
         var query = _db.Products.AsQueryable();
 
@@ -22,11 +22,38 @@ public class ProductController : Controller
             query = query.Where(p => p.Category == category);
         }
 
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            query = query.Where(p => p.Name.Contains(search) || p.Description.Contains(search));
+        }
+
+        query = sort switch
+        {
+            "price-low" => query.OrderBy(p => p.Price),
+            "price-high" => query.OrderByDescending(p => p.Price),
+            "name" => query.OrderBy(p => p.Name),
+            _ => query.OrderByDescending(p => p.Id)
+        };
+
         var totalItems = query.Count();
         var totalPages = (int)Math.Ceiling(totalItems / (double)PageSize);
 
+        if (totalPages == 0)
+        {
+            totalPages = 1;
+        }
+
+        if (page < 1)
+        {
+            page = 1;
+        }
+
+        if (page > totalPages)
+        {
+            page = totalPages;
+        }
+
         var products = query
-            .OrderBy(p => p.Id)
             .Skip((page - 1) * PageSize)
             .Take(PageSize)
             .ToList();
@@ -38,8 +65,11 @@ public class ProductController : Controller
             .ToList();
 
         ViewBag.CurrentCategory = category;
+        ViewBag.Search = search;
+        ViewBag.Sort = sort;
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = totalPages;
+        ViewBag.TotalItems = totalItems;
 
         return View(products);
     }

@@ -17,9 +17,18 @@
     }
 
     <header>
+        <div class="top-strip py-2">
+            <div class="container d-flex flex-wrap justify-content-between gap-2 small">
+                <span>Free shipping on orders above ₱3,000</span>
+                <span>Need help? Visit Contact page for support</span>
+            </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark sports-navbar shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Sports Store</a>
+                <a class="navbar-brand fw-bold d-flex align-items-center gap-2" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="brand-mark">S</span>
+                    <span>Sports Store</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

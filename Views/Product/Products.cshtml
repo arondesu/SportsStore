@@ -3,18 +3,58 @@
     ViewData["Title"] = "Products";
     var categories = ViewBag.Categories as List<string> ?? new List<string>();
     var currentCategory = ViewBag.CurrentCategory as string;
+    var search = ViewBag.Search as string;
+    var sort = ViewBag.Sort as string ?? "featured";
     var currentPage = (int)(ViewBag.CurrentPage ?? 1);
     var totalPages = (int)(ViewBag.TotalPages ?? 1);
+    var totalItems = (int)(ViewBag.TotalItems ?? 0);
     var returnUrl = Context.Request.Path + Context.Request.QueryString;
 }
 
-<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
-    <h1 class="h2 mb-2 mb-md-0">Products Catalog</h1>
+<section class="catalog-header rounded-4 p-4 p-lg-5 mb-4">
+    <div class="row g-3 align-items-end">
+        <div class="col-lg-6">
+            <p class="text-uppercase small fw-semibold mb-1 text-white-50">Sports Store Collection</p>
+            <h1 class="display-6 text-white mb-2">Train harder. Play smarter.</h1>
+            <p class="text-light mb-0">Browse high-performance gear inspired by modern sports retail experiences.</p>
+        </div>
+        <div class="col-lg-6">
+            <form asp-controller="Product" asp-action="Products" method="get" class="catalog-filter-card p-3 p-md-4">
+                <input type="hidden" name="category" value="@currentCategory" />
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-semibold mb-1">Search products</label>
+                        <input type="text" name="search" value="@search" class="form-control" placeholder="Shoes, jersey, bag..." />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-semibold mb-1">Sort by</label>
+                        <select name="sort" class="form-select">
+                            <option value="featured" selected="@(sort == "featured" ? "selected" : null)">Featured</option>
+                            <option value="price-low" selected="@(sort == "price-low" ? "selected" : null)">Price: Low to High</option>
+                            <option value="price-high" selected="@(sort == "price-high" ? "selected" : null)">Price: High to Low</option>
+                            <option value="name" selected="@(sort == "name" ? "selected" : null)">Name</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <label class="form-label small fw-semibold mb-1 opacity-0">Apply</label>
+                        <button type="submit" class="btn btn-accent">Apply</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+    <div>
+        <h2 class="h4 mb-1">Products Catalog</h2>
+        <p class="text-muted mb-0">@totalItems item(s) found</p>
+    </div>
     <div class="category-nav d-flex flex-wrap gap-2">
-        <a asp-controller="Product" asp-action="Products" class="btn btn-sm @(string.IsNullOrWhiteSpace(currentCategory) ? "btn-accent" : "btn-outline-dark")">All</a>
+        <a asp-controller="Product" asp-action="Products" asp-route-search="@search" asp-route-sort="@sort" class="btn btn-sm @(string.IsNullOrWhiteSpace(currentCategory) ? "btn-accent" : "btn-outline-dark")">All</a>
         @foreach (var category in categories)
         {
-            <a asp-controller="Product" asp-action="Products" asp-route-category="@category" class="btn btn-sm @(currentCategory == category ? "btn-accent" : "btn-outline-dark")">@category</a>
+            <a asp-controller="Product" asp-action="Products" asp-route-category="@category" asp-route-search="@search" asp-route-sort="@sort" class="btn btn-sm @(currentCategory == category ? "btn-accent" : "btn-outline-dark")">@category</a>
         }
     </div>
 </div>
@@ -26,7 +66,10 @@
             <div class="card h-100 product-card border-0 shadow-sm">
                 <img src="@product.ImageUrl" class="card-img-top product-image" alt="@product.Name" />
                 <div class="card-body d-flex flex-column">
-                    <span class="badge bg-dark mb-2 align-self-start">@product.Category</span>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-dark">@product.Category</span>
+                        <small class="text-muted">Stock: @product.StockQuantity</small>
+                    </div>
                     <h5 class="card-title">@product.Name</h5>
                     <p class="card-text text-muted small flex-grow-1">@product.Description</p>
                     <p class="h5 text-accent mb-3">₱@product.Price.ToString("N0")</p>
@@ -50,18 +93,18 @@
     <nav class="mt-4" aria-label="Products pagination">
         <ul class="pagination justify-content-center">
             <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-page="@(currentPage - 1)">Previous</a>
+                <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-search="@search" asp-route-sort="@sort" asp-route-page="@(currentPage - 1)">Previous</a>
             </li>
 
             @for (var i = 1; i <= totalPages; i++)
             {
                 <li class="page-item @(i == currentPage ? "active" : "")">
-                    <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-page="@i">@i</a>
+                    <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-search="@search" asp-route-sort="@sort" asp-route-page="@i">@i</a>
                 </li>
             }
 
             <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-page="@(currentPage + 1)">Next</a>
+                <a class="page-link" asp-action="Products" asp-route-category="@currentCategory" asp-route-search="@search" asp-route-sort="@sort" asp-route-page="@(currentPage + 1)">Next</a>
             </li>
         </ul>
     </nav>

@@ -1,8 +1,8 @@
 :root {
-  --sports-blue: #0b2545;
-  --sports-black: #111111;
+  --sports-blue: #051c3a;
+  --sports-black: #0f0f10;
   --sports-orange: #f18701;
-  --sports-gray: #f3f5f7;
+  --sports-gray: #f4f6f8;
 }
 
 html {
@@ -18,13 +18,32 @@ html {
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
+  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+  background:
+    radial-gradient(circle at 90% -10%, rgba(241, 135, 1, 0.16), transparent 40%),
+    linear-gradient(180deg, #f9fbff 0%, #eff3f8 100%);
   color: var(--sports-black);
 }
 
+.top-strip {
+  background: #0b0b0c;
+  color: #d9dde3;
+}
+
 .sports-navbar {
-  background: linear-gradient(90deg, var(--sports-blue), #0f3a6b);
+  background: linear-gradient(90deg, #041427, #0b2f57);
+}
+
+.brand-mark {
+  width: 1.9rem;
+  height: 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.45rem;
+  background: var(--sports-orange);
+  color: #111;
+  font-weight: 900;
 }
 
 .sports-navbar .nav-link,
@@ -43,8 +62,21 @@ body {
 
 .hero-banner {
   background:
-    linear-gradient(120deg, rgba(11, 37, 69, 0.92), rgba(11, 37, 69, 0.72)),
-    radial-gradient(circle at top right, rgba(241, 135, 1, 0.35), transparent 50%);
+    linear-gradient(120deg, rgba(3, 16, 33, 0.93), rgba(6, 39, 74, 0.8)),
+    radial-gradient(circle at top right, rgba(241, 135, 1, 0.3), transparent 55%);
+}
+
+.catalog-header {
+  background:
+    linear-gradient(120deg, rgba(2, 14, 30, 0.94), rgba(7, 36, 66, 0.85)),
+    radial-gradient(circle at top left, rgba(241, 135, 1, 0.25), transparent 42%);
+}
+
+.catalog-filter-card {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(2px);
 }
 
 .btn-accent {
@@ -67,7 +99,7 @@ body {
 
 .feature-card {
   background: #fff;
-  border: 1px solid #e8edf4;
+  border: 1px solid #dde4ee;
   border-radius: 1rem;
 }
 
@@ -77,7 +109,7 @@ body {
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 1rem 1.75rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 1.75rem rgba(9, 20, 35, 0.14);
 }
 
 .product-image {
@@ -94,8 +126,20 @@ body {
   color: var(--sports-blue);
 }
 
+.category-nav .btn {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
 .form-control:focus,
 .form-select:focus,
 .btn:focus {
   box-shadow: 0 0 0 0.2rem rgba(241, 135, 1, 0.25);
+}
+
+@media (max-width: 767.98px) {
+  .hero-banner,
+  .catalog-header {
+    border-radius: 0.75rem;
+  }
 }
