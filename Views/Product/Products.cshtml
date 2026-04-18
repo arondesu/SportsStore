@@ -11,6 +11,33 @@
     var returnUrl = Context.Request.Path + Context.Request.QueryString;
 }
 
+@functions {
+    private static string GetCategoryImage(Product product)
+    {
+        var name = product.Name.ToLowerInvariant();
+        var category = product.Category.ToLowerInvariant();
+
+        if (name.Contains("running") || name.Contains("futsal") || name.Contains("training shoes") || category == "shoes")
+            return "https://source.unsplash.com/900x900/?sports-shoes";
+        if (name.Contains("basketball jersey") || name.Contains("jersey") || category == "jerseys")
+            return "https://source.unsplash.com/900x900/?sports-jersey";
+        if (name.Contains("football") || name.Contains("basketball") || name.Contains("rope") || name.Contains("ladder") || name.Contains("cones") || category == "equipment")
+            return "https://source.unsplash.com/900x900/?sports-equipment";
+        if (name.Contains("cap"))
+            return "https://source.unsplash.com/900x900/?baseball-cap";
+        if (name.Contains("bag"))
+            return "https://source.unsplash.com/900x900/?duffel-bag";
+        if (name.Contains("bottle"))
+            return "https://source.unsplash.com/900x900/?water-bottle";
+        if (name.Contains("gloves"))
+            return "https://source.unsplash.com/900x900/?goalkeeper-gloves";
+
+        return string.IsNullOrWhiteSpace(product.ImageUrl)
+            ? "https://placehold.co/900x900/f3f5f8/0b0d12?text=Sports+Product"
+            : product.ImageUrl;
+    }
+}
+
 <section class="catalog-header rounded-4 p-4 p-lg-5 mb-4">
     <div class="row g-3 align-items-end">
         <div class="col-lg-6">
@@ -64,13 +91,14 @@
     {
         <div class="col-md-4">
             <div class="card h-100 product-card border-0 shadow-sm">
-                <img src="@product.ImageUrl" class="card-img-top product-image" alt="@product.Name" />
+                <img src="@GetCategoryImage(product)" class="card-img-top product-image" alt="@product.Name" onerror="this.onerror=null;this.src='https://placehold.co/900x900/f3f5f8/0b0d12?text=Sports+Product';" />
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-dark">@product.Category</span>
+                        <span class="badge badge-category">@product.Category</span>
                         <small class="text-muted">Stock: @product.StockQuantity</small>
                     </div>
                     <h5 class="card-title">@product.Name</h5>
+                    <p class="quick-meta mb-2">SKU: SP-@product.Id.ToString("D4") • Premium Sports Line</p>
                     <p class="card-text text-muted small flex-grow-1">@product.Description</p>
                     <p class="h5 text-accent mb-3">₱@product.Price.ToString("N0")</p>
                     <div class="d-flex gap-2 mt-auto">

@@ -1,8 +1,10 @@
 :root {
-  --sports-blue: #051c3a;
-  --sports-black: #0f0f10;
-  --sports-orange: #f18701;
-  --sports-gray: #f4f6f8;
+  --sports-blue: #0b3a78;
+  --sports-blue-dark: #08264f;
+  --sports-black: #0b0d12;
+  --sports-yellow: #ffcc00;
+  --sports-yellow-dark: #e2b400;
+  --sports-gray: #f3f5f8;
 }
 
 html {
@@ -20,18 +22,18 @@ html {
 body {
   font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
   background:
-    radial-gradient(circle at 90% -10%, rgba(241, 135, 1, 0.16), transparent 40%),
-    linear-gradient(180deg, #f9fbff 0%, #eff3f8 100%);
+    radial-gradient(circle at 92% -8%, rgba(255, 204, 0, 0.2), transparent 38%),
+    linear-gradient(180deg, #f7f9fd 0%, #edf2f9 100%);
   color: var(--sports-black);
 }
 
 .top-strip {
-  background: #0b0b0c;
-  color: #d9dde3;
+  background: #08090c;
+  color: #d8dfeb;
 }
 
 .sports-navbar {
-  background: linear-gradient(90deg, #041427, #0b2f57);
+  background: linear-gradient(90deg, #05070c, #0b2c5a);
 }
 
 .brand-mark {
@@ -41,7 +43,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 0.45rem;
-  background: var(--sports-orange);
+  background: var(--sports-yellow);
   color: #111;
   font-weight: 900;
 }
@@ -53,23 +55,23 @@ body {
 
 .sports-navbar .nav-link:hover,
 .sports-navbar .navbar-brand:hover {
-  color: #ffd29c;
+  color: #ffe784;
 }
 
 .sports-footer {
-  background: #0c0c0c;
+  background: #08090c;
 }
 
 .hero-banner {
   background:
-    linear-gradient(120deg, rgba(3, 16, 33, 0.93), rgba(6, 39, 74, 0.8)),
-    radial-gradient(circle at top right, rgba(241, 135, 1, 0.3), transparent 55%);
+    linear-gradient(120deg, rgba(5, 9, 16, 0.94), rgba(9, 40, 84, 0.86)),
+    radial-gradient(circle at top right, rgba(255, 204, 0, 0.34), transparent 55%);
 }
 
 .catalog-header {
   background:
-    linear-gradient(120deg, rgba(2, 14, 30, 0.94), rgba(7, 36, 66, 0.85)),
-    radial-gradient(circle at top left, rgba(241, 135, 1, 0.25), transparent 42%);
+    linear-gradient(120deg, rgba(5, 8, 14, 0.95), rgba(8, 44, 92, 0.86)),
+    radial-gradient(circle at top left, rgba(255, 204, 0, 0.25), transparent 42%);
 }
 
 .catalog-filter-card {
@@ -80,27 +82,31 @@ body {
 }
 
 .btn-accent {
-  background-color: var(--sports-orange);
-  border-color: var(--sports-orange);
+  background-color: var(--sports-yellow);
+  border-color: var(--sports-yellow);
   color: #111;
   font-weight: 600;
 }
 
 .btn-accent:hover,
 .btn-accent:focus {
-  background-color: #d97600;
-  border-color: #d97600;
-  color: #fff;
+  background-color: var(--sports-yellow-dark);
+  border-color: var(--sports-yellow-dark);
+  color: #111;
 }
 
 .text-accent {
-  color: var(--sports-orange);
+  color: #c39600;
 }
 
 .feature-card {
   background: #fff;
-  border: 1px solid #dde4ee;
+  border: 1px solid #d9e1ee;
   border-radius: 1rem;
+}
+
+.feature-card h3 {
+  color: var(--sports-blue-dark);
 }
 
 .product-card {
@@ -109,7 +115,7 @@ body {
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 1rem 1.75rem rgba(9, 20, 35, 0.14);
+  box-shadow: 0 1rem 1.75rem rgba(7, 19, 40, 0.16);
 }
 
 .product-image {
@@ -131,10 +137,20 @@ body {
   font-weight: 600;
 }
 
+.badge-category {
+  background-color: #10131b;
+  color: #ffe68a;
+}
+
+.quick-meta {
+  font-size: 0.82rem;
+  color: #5a6475;
+}
+
 .form-control:focus,
 .form-select:focus,
 .btn:focus {
-  box-shadow: 0 0 0 0.2rem rgba(241, 135, 1, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25);
 }
 
 @media (max-width: 767.98px) {

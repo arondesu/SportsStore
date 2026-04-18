@@ -4,18 +4,77 @@
     var returnUrl = Context.Request.Headers.Referer.ToString();
 }
 
+@functions {
+    private static string GetCategoryImage(Product product)
+    {
+        var name = product.Name.ToLowerInvariant();
+        var category = product.Category.ToLowerInvariant();
+
+        if (name.Contains("running") || name.Contains("futsal") || name.Contains("training shoes") || category == "shoes")
+            return "https://source.unsplash.com/1200x1200/?sports-shoes";
+        if (name.Contains("basketball jersey") || name.Contains("jersey") || category == "jerseys")
+            return "https://source.unsplash.com/1200x1200/?sports-jersey";
+        if (name.Contains("football") || name.Contains("basketball") || name.Contains("rope") || name.Contains("ladder") || name.Contains("cones") || category == "equipment")
+            return "https://source.unsplash.com/1200x1200/?sports-equipment";
+        if (name.Contains("cap"))
+            return "https://source.unsplash.com/1200x1200/?baseball-cap";
+        if (name.Contains("bag"))
+            return "https://source.unsplash.com/1200x1200/?duffel-bag";
+        if (name.Contains("bottle"))
+            return "https://source.unsplash.com/1200x1200/?water-bottle";
+        if (name.Contains("gloves"))
+            return "https://source.unsplash.com/1200x1200/?goalkeeper-gloves";
+
+        return string.IsNullOrWhiteSpace(product.ImageUrl)
+            ? "https://placehold.co/1200x1200/f3f5f8/0b0d12?text=Sports+Product"
+            : product.ImageUrl;
+    }
+}
+
 <div class="card border-0 shadow-sm">
     <div class="row g-0">
         <div class="col-md-5">
-            <img src="@Model.ImageUrl" class="img-fluid rounded-start h-100 object-fit-cover" alt="@Model.Name" />
+            <img src="@GetCategoryImage(Model)" class="img-fluid rounded-start h-100 object-fit-cover" alt="@Model.Name" onerror="this.onerror=null;this.src='https://placehold.co/1200x1200/f3f5f8/0b0d12?text=Sports+Product';" />
         </div>
         <div class="col-md-7">
             <div class="card-body p-4">
-                <span class="badge bg-dark mb-2">@Model.Category</span>
+                <span class="badge badge-category mb-2">@Model.Category</span>
                 <h1 class="h3">@Model.Name</h1>
-                <p class="text-muted">@Model.Description</p>
-                <p><strong>Stock:</strong> @Model.StockQuantity</p>
-                <p class="h4 text-accent mb-4">₱@Model.Price.ToString("N0")</p>
+                <p class="quick-meta mb-2">SKU: SP-@Model.Id.ToString("D4") • Sports Store Elite Series</p>
+                <p class="text-muted mb-3">@(string.IsNullOrWhiteSpace(Model.Description) ? "No description available yet for this product." : Model.Description)</p>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-2 h-100 bg-light-subtle">
+                            <small class="text-muted d-block">Price</small>
+                            <strong class="text-accent">₱@Model.Price.ToString("N0")</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-2 h-100 bg-light-subtle">
+                            <small class="text-muted d-block">Stock Available</small>
+                            <strong>@Model.StockQuantity</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-2 h-100 bg-light-subtle">
+                            <small class="text-muted d-block">Category</small>
+                            <strong>@Model.Category</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-2 h-100 bg-light-subtle">
+                            <small class="text-muted d-block">Shipping</small>
+                            <strong>Estimated 2–5 days</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="mb-4 text-muted small">
+                    <li>Suitable for training and daily sports use</li>
+                    <li>Authentic Sports Store curated item</li>
+                    <li>Best paired with accessories in the same category</li>
+                </ul>
 
                 <div class="d-flex gap-2">
                     <form asp-controller="Cart" asp-action="AddToCart" method="post">
