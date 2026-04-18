@@ -1,0 +1,101 @@
+:root {
+  --sports-blue: #0b2545;
+  --sports-black: #111111;
+  --sports-orange: #f18701;
+  --sports-gray: #f3f5f7;
+}
+
+html {
+  font-size: 15px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
+  color: var(--sports-black);
+}
+
+.sports-navbar {
+  background: linear-gradient(90deg, var(--sports-blue), #0f3a6b);
+}
+
+.sports-navbar .nav-link,
+.sports-navbar .navbar-brand {
+  color: #ffffff;
+}
+
+.sports-navbar .nav-link:hover,
+.sports-navbar .navbar-brand:hover {
+  color: #ffd29c;
+}
+
+.sports-footer {
+  background: #0c0c0c;
+}
+
+.hero-banner {
+  background:
+    linear-gradient(120deg, rgba(11, 37, 69, 0.92), rgba(11, 37, 69, 0.72)),
+    radial-gradient(circle at top right, rgba(241, 135, 1, 0.35), transparent 50%);
+}
+
+.btn-accent {
+  background-color: var(--sports-orange);
+  border-color: var(--sports-orange);
+  color: #111;
+  font-weight: 600;
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
+  background-color: #d97600;
+  border-color: #d97600;
+  color: #fff;
+}
+
+.text-accent {
+  color: var(--sports-orange);
+}
+
+.feature-card {
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 1rem;
+}
+
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 1.75rem rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.page-item.active .page-link {
+  background-color: var(--sports-blue);
+  border-color: var(--sports-blue);
+}
+
+.page-link {
+  color: var(--sports-blue);
+}
+
+.form-control:focus,
+.form-select:focus,
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(241, 135, 1, 0.25);
+}

@@ -1,0 +1,16 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Order Complete";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-3">Thank you for your order!</h1>
+        <p class="mb-1"><strong>Customer:</strong> @Model.FullName</p>
+        <p class="mb-1"><strong>Email:</strong> @Model.Email</p>
+        <p class="mb-3"><strong>Payment Method:</strong> @Model.PaymentMethod</p>
+        <p class="h5">Order Total: <span class="text-accent">₱@(((decimal)ViewBag.OrderTotal).ToString("N0"))</span></p>
+
+        <a asp-controller="Product" asp-action="Products" class="btn btn-accent mt-3">Continue Shopping</a>
+    </div>
+</div>

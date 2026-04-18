@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-banner rounded-4 p-5 mb-4 text-white">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <h1 class="display-5 fw-bold">Sports Store Application</h1>
+            <p class="lead mb-4">Find quality sports gear for training, matches, and everyday fitness.</p>
+            <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg">Shop Products</a>
+        </div>
+        <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded-4 shadow" alt="Sports banner" />
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+            <h3>Top Brands</h3>
+            <p class="mb-0">Trusted products for shoes, jerseys, and equipment.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+            <h3>Student Friendly</h3>
+            <p class="mb-0">Simple and clear shopping flow for learning MVC concepts.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+            <h3>Fast Checkout</h3>
+            <p class="mb-0">Add products to cart and complete checkout in a few steps.</p>
+        </div>
+    </div>
+</section>
