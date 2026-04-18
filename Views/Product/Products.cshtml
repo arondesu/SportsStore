@@ -14,27 +14,10 @@
 @functions {
     private static string GetCategoryImage(Product product)
     {
-        var name = product.Name.ToLowerInvariant();
-        var category = product.Category.ToLowerInvariant();
+        if (!string.IsNullOrWhiteSpace(product.ImageUrl))
+            return product.ImageUrl;
 
-        if (name.Contains("running") || name.Contains("futsal") || name.Contains("training shoes") || category == "shoes")
-            return "https://source.unsplash.com/900x900/?sports-shoes";
-        if (name.Contains("basketball jersey") || name.Contains("jersey") || category == "jerseys")
-            return "https://source.unsplash.com/900x900/?sports-jersey";
-        if (name.Contains("football") || name.Contains("basketball") || name.Contains("rope") || name.Contains("ladder") || name.Contains("cones") || category == "equipment")
-            return "https://source.unsplash.com/900x900/?sports-equipment";
-        if (name.Contains("cap"))
-            return "https://source.unsplash.com/900x900/?baseball-cap";
-        if (name.Contains("bag"))
-            return "https://source.unsplash.com/900x900/?duffel-bag";
-        if (name.Contains("bottle"))
-            return "https://source.unsplash.com/900x900/?water-bottle";
-        if (name.Contains("gloves"))
-            return "https://source.unsplash.com/900x900/?goalkeeper-gloves";
-
-        return string.IsNullOrWhiteSpace(product.ImageUrl)
-            ? "https://placehold.co/900x900/f3f5f8/0b0d12?text=Sports+Product"
-            : product.ImageUrl;
+        return "https://placehold.co/900x900/f3f5f8/0b0d12?text=Sports+Product";
     }
 }
 
