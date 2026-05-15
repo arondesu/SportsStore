@@ -103,6 +103,44 @@ body {
   background: #fff;
   border: 1px solid #d9e1ee;
   border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 1.5rem rgba(7, 19, 40, 0.12);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(11, 58, 120, 0.1), rgba(255, 204, 0, 0.1));
+  font-size: 1.75rem;
+  color: #0b3a78;
+}
+
+.hero-decoration svg {
+  width: 220px;
+  height: 220px;
+}
+
+.cta-banner {
+  background: linear-gradient(120deg, rgba(11, 58, 120, 0.88), rgba(5, 9, 16, 0.92));
+}
+
+.cta-banner .cta-decoration svg {
+  width: 340px;
+  height: 340px;
 }
 
 .feature-card h3 {

@@ -2,40 +2,81 @@
     ViewData["Title"] = "Home";
 }
 
-<section class="hero-banner rounded-4 p-5 mb-4 text-white">
+<!-- Hero Banner -->
+<section class="hero-banner rounded-4 p-5 mb-5 text-white position-relative overflow-hidden">
     <div class="row align-items-center">
         <div class="col-lg-7">
             <p class="text-uppercase small fw-semibold mb-2 text-warning">Performance Collection 2026</p>
-            <h1 class="display-5 fw-bold">Move Faster. Train Smarter. Win More.</h1>
-            <p class="lead mb-4">Explore elite footwear, team-ready jerseys, and match-day essentials in a bold modern store inspired by top global sports retailers.</p>
+            <h1 class="display-4 fw-bold lh-lg mb-3">Move Faster.<br>Train Smarter.<br>Win More.</h1>
+            <p class="lead mb-4 pe-lg-4">Explore elite footwear, team-ready jerseys, and match-day essentials in a bold modern store inspired by top global sports retailers.</p>
             <div class="d-flex flex-wrap gap-2">
-                <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg">Shop Products</a>
-                <a asp-controller="Product" asp-action="Products" asp-route-category="Shoes" class="btn btn-outline-light btn-lg">Shop Shoes</a>
+                <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg px-4">Shop All Products</a>
+                <a asp-controller="Product" asp-action="Products" asp-route-category="Shoes" class="btn btn-outline-light btn-lg px-4">Shop Shoes</a>
             </div>
         </div>
         <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
-            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded-4 shadow" alt="Sports banner" />
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded-4 shadow-lg" alt="Sports banner" loading="lazy" />
+        </div>
+    </div>
+    <div class="hero-decoration d-none d-lg-block">
+        <svg width="200" height="200" viewBox="0 0 200 200" class="position-absolute bottom-0 end-0 opacity-10" fill="none">
+            <circle cx="100" cy="100" r="80" stroke="rgba(255,204,0,0.3)" stroke-width="2" />
+            <circle cx="100" cy="100" r="50" stroke="rgba(255,204,0,0.2)" stroke-width="1.5" />
+        </svg>
+    </div>
+</section>
+
+<!-- Section Heading -->
+<div class="text-center mb-4">
+    <p class="text-uppercase small fw-semibold text-warning mb-1">What Makes Us Different</p>
+    <h2 class="display-6 fw-bold text-dark">Built for Athletes. <span class="text-accent">Designed for You.</span></h2>
+    <div class="w-50 mx-auto mt-2" style="height: 3px; background: linear-gradient(90deg, transparent, var(--sports-yellow), transparent);"></div>
+</div>
+
+<!-- Feature Cards -->
+<section class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="feature-card p-4 p-lg-5 h-100 text-center border-0 shadow-sm rounded-4">
+            <div class="feature-icon mb-3">
+                <span class="feature-icon-bg">⚡</span>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Pro-Level Selection</h3>
+            <p class="text-muted mb-0">Curated sports gear built for comfort, performance, and everyday training. Every product is tested for quality.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4 p-lg-5 h-100 text-center border-0 shadow-sm rounded-4">
+            <div class="feature-icon mb-3">
+                <span class="feature-icon-bg">🎨</span>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Style + Performance</h3>
+            <p class="text-muted mb-0">Clean product presentation inspired by the latest digital sports storefronts. Look good, play better.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4 p-lg-5 h-100 text-center border-0 shadow-sm rounded-4">
+            <div class="feature-icon mb-3">
+                <span class="feature-icon-bg">🚀</span>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Fast Cart Experience</h3>
+            <p class="text-muted mb-0">Add to cart in one click and finish checkout with a straightforward, no-fuss flow.</p>
         </div>
     </div>
 </section>
 
-<section class="row g-4">
-    <div class="col-md-4">
-        <div class="feature-card p-4 h-100">
-            <h3>Pro-Level Selection</h3>
-            <p class="mb-0">Curated sports gear built for comfort, performance, and everyday training.</p>
-        </div>
+<!-- CTA Section -->
+<section class="cta-banner rounded-4 p-4 p-lg-5 mb-5 text-white text-center position-relative overflow-hidden">
+    <div class="position-relative" style="z-index: 1;">
+        <h2 class="display-6 fw-bold mb-2">Ready to Elevate Your Game?</h2>
+        <p class="lead mb-4">Browse the full catalog and find the perfect gear for your next match, workout, or everyday wear.</p>
+        <a asp-controller="Product" asp-action="Products" class="btn btn-accent btn-lg px-5">
+            Browse Products &rarr;
+        </a>
     </div>
-    <div class="col-md-4">
-        <div class="feature-card p-4 h-100">
-            <h3>Style + Performance</h3>
-            <p class="mb-0">Clean product presentation inspired by the latest digital sports storefronts.</p>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="feature-card p-4 h-100">
-            <h3>Fast Cart Experience</h3>
-            <p class="mb-0">Add to cart in one click and finish checkout with a straightforward flow.</p>
-        </div>
+    <div class="cta-decoration d-none d-lg-block">
+        <svg width="300" height="300" viewBox="0 0 300 300" class="position-absolute top-50 start-50 translate-middle opacity-10" fill="none">
+            <circle cx="150" cy="150" r="120" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+            <circle cx="150" cy="150" r="60" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+        </svg>
     </div>
 </section>
